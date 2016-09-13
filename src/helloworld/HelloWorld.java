@@ -200,4 +200,23 @@ public class HelloWorld {
     assert factorial(1) == 1;
     assert factorial(5) == 120;
   }
+
+  void testString(){
+    String hi = "hello";
+    assert hi.length() == 5;
+    assert hi.substring(1, 3).equals("el");
+
+    hi = hi + " world";
+
+    StringBuilder sb = new StringBuilder();
+    sb.append(hi);
+    sb.append(" world");
+    sb.append(" #");
+    sb.append(13);
+    String hw = sb.toString();
+
+    println(hw);
+
+    hi = hi + " world";
+  }
 }
