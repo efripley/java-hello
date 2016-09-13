@@ -65,19 +65,11 @@ public class HelloWorld {
 
     assert (0b1010_1111 << 4) == 0b1010_1111_0000; //bitshift left
 
-    println(a);
-
     int b = random(0, 1000000);
-
-    println(b);
 
     int c = random(-1000000, 1000000);
 
-    println(c);
-
     assert ((~c) + 1) == -c;
-
-    println(Integer.toString(-2, 2));
 
     assert (b >> 1) == b / 2;
     assert (b << 1) == b * 2;
@@ -179,5 +171,33 @@ public class HelloWorld {
         println(word);
       }
     }
+  }
+
+  int instanceValue = 0;
+
+  void methodExample(){
+    int localValue = 0;
+    ++instanceValue;
+    ++localValue;
+    println("I",instanceValue,"L",localValue);
+  }
+
+  long factorial(int n){
+    if(n > 1)
+      return n * factorial(n - 1);
+    else
+      return n;
+  }
+
+  void testFunctions(){
+
+    try(Close out = outExpect("I", 1, "L", 1, EOL, "I", 2, "L", 1, EOL, "I", 3, "L", 1, EOL)){
+      methodExample();
+      methodExample();
+      methodExample();
+    }
+
+    assert factorial(1) == 1;
+    assert factorial(5) == 120;
   }
 }
